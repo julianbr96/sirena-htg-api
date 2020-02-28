@@ -10,7 +10,7 @@ const MONGO_URI =
 const mongoose = require('mongoose')
 
 mongoose
-  .connect(MONGO_URI, function() {
+  .connect(MONGO_URI, function () {
     console.log('Connected to MongoDB')
   })
   .then(() => {
