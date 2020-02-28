@@ -21,5 +21,6 @@ mongoose
 
 app.use(bodyParser())
 app.use(router.rootRouter.routes())
+app.use(router.userRouter.routes())
 
 module.exports = app

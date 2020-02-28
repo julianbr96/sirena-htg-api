@@ -21,6 +21,7 @@ const schema = mongoose.Schema(
     },
     roles: [
       {
+        type: String,
         enum: userRoles,
         required: true
       }
@@ -74,7 +75,6 @@ const schema = mongoose.Schema(
       type: Boolean,
       default: true
     },
-    timezone: { type: String, required: true },
     language: {
       type: String,
       enum: ['es', 'pt', 'en']

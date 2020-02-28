@@ -1,0 +1,13 @@
+{
+    "userName": "admin1test@account1.test",
+    "roles": "admin",
+    "group": "12344",
+    "account": "12345",
+    "nin": "999999999",
+    "firstName": "Admin1",
+    "lastName": "Test",
+    "phone": "+541234567892",
+    "cellphone": "+542345654567",
+    "password": "Admintest123",
+    "language": "es"
+}

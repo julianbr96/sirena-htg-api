@@ -1,3 +1,6 @@
 'use strict'
+
 const rootRouter = require('./rootRouter')
-module.exports = { rootRouter }
+const userRouter = require('./userRouter')
+
+module.exports = { rootRouter, userRouter }
