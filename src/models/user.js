@@ -28,11 +28,13 @@ const schema = mongoose.Schema(
     ],
     group: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'group'
+      ref: 'group',
+      required: true
     },
     account: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'account'
+      ref: 'account',
+      required: true
     },
     nin: {
       type: String,
@@ -49,10 +51,6 @@ const schema = mongoose.Schema(
     phone: {
       type: String,
       required: true,
-      trim: true
-    },
-    cellPhone: {
-      type: String,
       trim: true
     },
     pwHash: {

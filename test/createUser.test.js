@@ -14,6 +14,11 @@ describe('Testing CREATE NEW USER', () => {
       .send({ user: validUser })
     expect(response.status).toBe(201)
     expect(response.body.status).toBe('success')
+    await User.deleteOne({ userName: validUser.userName }, error => {
+      if (error) {
+        throw Error(error)
+      }
+    })
     done()
   })
 })

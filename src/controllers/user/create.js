@@ -8,10 +8,13 @@ exports.createUser = async function(ctx) {
     .save()
     .then(() => {
       ctx.status = 201
-      ctx.body.status = 'success'
+      ctx.body = { status: 'success' }
     })
     .catch(error => {
       ctx.status = 400
-      ctx.body = { error: error }
+      ctx.body = {
+        error: error,
+        failedUser: user
+      }
     })
 }
