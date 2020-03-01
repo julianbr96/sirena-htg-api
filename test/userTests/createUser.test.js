@@ -5,8 +5,12 @@ const validUser = require('../resources/testUser.json')
 const User = require('../../src/models/user')
 
 describe('Testing CREATE NEW USER', () => {
-  afterAll(() => {
-    mongoose.disconnect()
+  beforeAll(async () => {
+    await deleteTestUser()
+  })
+  afterAll(async () => {
+    await deleteTestUser()
+    await mongoose.disconnect()
   })
   it('POST /api/users should return status 201', async done => {
     const response = await supertest(app.callback())
@@ -14,11 +18,14 @@ describe('Testing CREATE NEW USER', () => {
       .send({ user: validUser })
     expect(response.status).toBe(201)
     expect(response.body.status).toBe('success')
-    await User.deleteOne({ userName: validUser.userName }, error => {
-      if (error) {
-        throw Error(error)
-      }
-    })
     done()
   })
 })
+
+async function deleteTestUser() {
+  await User.deleteOne({ userName: validUser.userName }, error => {
+    if (error) {
+      throw Error(error)
+    }
+  })
+}
