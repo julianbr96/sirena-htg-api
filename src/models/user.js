@@ -95,4 +95,4 @@ schema.method('comparePassword', function comparPassword(password) {
   return this.pwHash && bcrypt.compareSync(password, this.pwHash)
 })
 
-module.exports = mongoose.model('User', schema)
+module.exports = mongoose.model('user', schema)

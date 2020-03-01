@@ -15,7 +15,8 @@ const schema = new mongoose.Schema(
   },
   {
     collection: 'accounts',
-    timestamps: true
+    timestamps: true,
+    retainKeyOrder: true
   }
 )
 

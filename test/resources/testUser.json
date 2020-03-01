@@ -3,11 +3,11 @@
     "roles": [
         "admin"
     ],
-    "group": "12344",
-    "account": "12345",
+    "group": "5e5c11a7561a66783510d37a",
+    "account": "5e5c071d11b3395db506571d",
     "nin": "999999999",
     "firstName": "Admin1",
-    "lastName": "Test",
+    "lastName": "TEST",
     "phone": "+541234567892",
     "password": "Admintest123",
     "language": "es"
