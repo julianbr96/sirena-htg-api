@@ -2,7 +2,7 @@
 
 const Router = require('koa-router')
 const router = new Router()
-const userController = require('../controllers/user')
+const userController = require('../controllers/users')
 const baseUrl = '/api/users'
 
 // router.get(`${baseUrl}/`, userController.getAllUsers)

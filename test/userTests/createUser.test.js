@@ -1,8 +1,8 @@
 const supertest = require('supertest')
-const app = require('../src/app')
+const app = require('../../src/app')
 const mongoose = require('mongoose')
-const validUser = require('./resources/validUser.json')
-const User = require('../src/models/user')
+const validUser = require('../resources/testUser.json')
+const User = require('../../src/models/user')
 
 describe('Testing CREATE NEW USER', () => {
   afterAll(() => {
