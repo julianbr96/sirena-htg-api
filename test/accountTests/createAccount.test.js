@@ -16,14 +16,18 @@ describe('Testing CREATE NEW ACCOUNT', () => {
       .send({ account: validAccount })
     expect(response.status).toBe(201)
     expect(response.body.status).toBe('success')
-    await Account.deleteOne(
-      { name: validAccount.name },
-      error => {
-        if (error) {
-          throw Error(error)
-        }
+    await Account.deleteOne({ name: validAccount.name }, error => {
+      if (error) {
+        throw Error(error)
       }
-    )
+    })
+    done()
+  })
+  it('POST /api/private/accounts without token should return status 401', async done => {
+    const response = await supertest(app.callback())
+      .post('/api/private/accounts')
+      .send({ account: validAccount })
+    expect(response.status).toBe(401)
     done()
   })
 })

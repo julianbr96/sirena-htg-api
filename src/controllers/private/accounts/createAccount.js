@@ -2,7 +2,7 @@
 
 const Account = require('../../../models/account')
 
-exports.createAccount = async function(ctx) {
+const createAccount = async function(ctx) {
   const account = await new Account(ctx.request.body.account)
   await account
     .save()
@@ -18,3 +18,5 @@ exports.createAccount = async function(ctx) {
       }
     })
 }
+
+module.exports = createAccount

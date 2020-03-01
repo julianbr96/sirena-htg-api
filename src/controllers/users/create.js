@@ -2,7 +2,7 @@
 
 const User = require('../../models/user')
 
-exports.createUser = async function(ctx) {
+const createUser = async function(ctx) {
   const user = await new User(ctx.request.body.user)
   await user
     .save()
@@ -18,3 +18,5 @@ exports.createUser = async function(ctx) {
       }
     })
 }
+
+module.exports = createUser

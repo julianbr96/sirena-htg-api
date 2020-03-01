@@ -15,4 +15,11 @@ describe('Testing GET ALL ACCOUNTS', () => {
     expect(response.body.status).toBe('success')
     done()
   })
+  it('GET /api/private/accounts without token should return status 401', async done => {
+    const response = await supertest(app.callback()).get(
+      '/api/private/accounts'
+    )
+    expect(response.status).toBe(401)
+    done()
+  })
 })

@@ -2,6 +2,12 @@
 
 const rootRouter = require('./rootRouter')
 const userRouter = require('./userRouter')
-const accountRouter = require('./private/accountRouter')
+const privateAccountRouter = require('./private/accountRouter')
+const publicAccountRouter = require('./accountRouter')
 
-module.exports = { rootRouter, userRouter, accountRouter }
+module.exports = {
+  rootRouter,
+  userRouter,
+  privateAccountRouter,
+  publicAccountRouter
+}

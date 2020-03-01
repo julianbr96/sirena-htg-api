@@ -1,4 +1,5 @@
 'use strict'
+
 const Koa = require('koa')
 const bodyParser = require('koa-parser')
 const router = require('./routes')
@@ -22,6 +23,7 @@ mongoose
 app.use(bodyParser())
 app.use(router.rootRouter.routes())
 app.use(router.userRouter.routes())
-app.use(router.accountRouter.routes())
+app.use(router.privateAccountRouter.routes())
+app.use(router.publicAccountRouter.routes())
 
 module.exports = app
