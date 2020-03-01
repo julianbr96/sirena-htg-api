@@ -28,6 +28,11 @@ describe('Testing CREATE NEW ACCOUNT', () => {
       .post('/api/private/accounts')
       .send({ account: validAccount })
     expect(response.status).toBe(401)
+    await Account.deleteOne({ name: validAccount.name }, error => {
+      if (error) {
+        throw Error(error)
+      }
+    })
     done()
   })
 })

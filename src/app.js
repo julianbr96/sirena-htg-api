@@ -3,11 +3,10 @@
 const Koa = require('koa')
 const bodyParser = require('koa-parser')
 const router = require('./routes')
-
+const config = require('./config/global.json')
 const app = new Koa()
 
-const MONGO_URI =
-  process.env.MONGO_URI || 'mongodb://localhost/sirena-htg-local'
+const MONGO_URI = config.MONGO_URI
 const mongoose = require('mongoose')
 
 mongoose
