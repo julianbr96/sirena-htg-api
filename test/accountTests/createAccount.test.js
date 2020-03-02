@@ -31,7 +31,7 @@ describe('Testing CREATE NEW ACCOUNT', () => {
   })
 })
 
-async function deleteTestAccount() {
+async function deleteTestAccount () {
   await Account.deleteOne({ name: validAccount.name }, error => {
     if (error) {
       throw Error(error)

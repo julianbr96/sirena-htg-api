@@ -42,7 +42,7 @@ describe('Testing MODIFY ONE ACCOUNT', () => {
   })
 })
 
-async function deleteTestAccount() {
+async function deleteTestAccount () {
   await Group.deleteOne({ name: validGroup.name }, error => {
     if (error) {
       throw Error(error)

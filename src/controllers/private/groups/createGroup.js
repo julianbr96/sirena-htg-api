@@ -2,7 +2,7 @@
 
 const Group = require('../../../models/group')
 
-const createGroup = async function(ctx) {
+const createGroup = async function (ctx) {
   const group = await new Group(ctx.request.body.group)
   await group
     .save()

@@ -1,0 +1,8 @@
+[
+    {
+      "key": "shift+alt+t",
+      "command": "workbench.action.tasks.runTask",
+      "args": "runCurrentTest"
+    }
+  ]
+  

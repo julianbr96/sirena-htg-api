@@ -87,11 +87,11 @@ const schema = mongoose.Schema(
 
 schema.plugin(uniqueValidator)
 
-schema.virtual('password').set(function setPassword(password) {
+schema.virtual('password').set(function setPassword (password) {
   this.pwHash = bcrypt.hashSync(password, BCRYPT_SALT_ROUNDS)
 })
 
-schema.method('comparePassword', function comparPassword(password) {
+schema.method('comparePassword', function comparPassword (password) {
   return this.pwHash && bcrypt.compareSync(password, this.pwHash)
 })
 

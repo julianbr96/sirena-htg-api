@@ -22,7 +22,7 @@ describe('Testing CREATE NEW USER', () => {
   })
 })
 
-async function deleteTestUser() {
+async function deleteTestUser () {
   await User.deleteOne({ userName: validUser.userName }, error => {
     if (error) {
       throw Error(error)

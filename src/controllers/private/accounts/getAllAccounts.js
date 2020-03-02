@@ -2,13 +2,14 @@
 
 const Account = require('../../../models/account')
 
-const getAllAccounts = async ctx => {
+const getAllAccounts = async (ctx) => {
   await Account.find()
-    .then(accounts => {
+    .then((accounts) => {
       ctx.status = 200
       ctx.body = { accounts: accounts, status: 'success' }
     })
-    .catch(error => {
+    .catch((error) => {
+      console.log(error)
       ctx.throw(400, 'Bad request')
     })
 }

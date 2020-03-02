@@ -21,13 +21,13 @@ app.use(router.privateGroupRouter.routes())
 
 module.exports = app
 
-async function connectDb() {
+async function connectDb () {
   await mongoose
     .connect(MONGO_URI)
     .then(async () => {
       console.log('Successfully connected to MongoDB Atlas!')
     })
-    .catch(async error => {
+    .catch(async (error) => {
       console.log('Unable to connect to MongoDB Atlas!')
       console.error(error)
     })
