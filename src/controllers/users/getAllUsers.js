@@ -3,7 +3,7 @@
 const User = require('../../models/user')
 
 const getAllUsers = async (ctx) => {
-  await User.find()
+  await User.find({}, { group: 1, account: 1, firstName: 1, lastName: 1, userName: 1, roles: 1, available: 1 })
     .then((users) => {
       ctx.status = 200
       ctx.body = { users: users, status: 'success' }

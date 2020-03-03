@@ -1,9 +1,9 @@
 'use strict'
 
-const Group = require('../../../models/group')
+const Group = require('../../models/group')
 
 const getAllGroups = async (ctx) => {
-  await Group.find()
+  await Group.find({}, { name: 1, parent: 1, account: 1 })
     .then((groups) => {
       ctx.status = 200
       ctx.body = { groups: groups, status: 'success' }

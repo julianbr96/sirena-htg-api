@@ -8,6 +8,5 @@ const auth = require('../../middleware/secretAuth')
 
 router.put(`${baseUrl}/:id`, auth, groupController.modifyGroup)
 router.post(`${baseUrl}/`, auth, groupController.createGroup)
-router.get(`${baseUrl}/`, auth, groupController.getAllGroups)
 
 module.exports = router
