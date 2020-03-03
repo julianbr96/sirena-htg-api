@@ -17,7 +17,7 @@ app.use(router.userRouter.routes())
 app.use(router.privateAccountRouter.routes())
 app.use(router.publicAccountRouter.routes())
 app.use(router.privateGroupRouter.routes())
-app.use(router.privateGroupRouter.routes())
+app.use(router.publicGroupRouter.routes())
 
 module.exports = app
 
