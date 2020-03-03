@@ -11,6 +11,7 @@ describe('Testing GET ALL ACCOUNTS', () => {
     const response = await supertest(app.callback()).get('/api/private/groups').set('authorization', SECRET)
     expect(response.status).toBe(200)
     expect(response.body.status).toBe('success')
+    expect(response.body.groups).toBeDefined()
     done()
   })
   it('GET /api/private/groups without token should return status 401', async (done) => {

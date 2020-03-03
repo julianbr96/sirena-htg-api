@@ -10,7 +10,7 @@ const getAllGroups = async (ctx) => {
     })
     .catch((error) => {
       console.log(error)
-      ctx.throw(400, 'Bad request')
+      ctx.throw(500, 'Internal Server Error')
     })
 }
 
