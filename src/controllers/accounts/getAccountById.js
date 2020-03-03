@@ -9,7 +9,7 @@ const getAccountById = async (ctx) => {
       ctx.body = { account: account, status: 'success' }
     })
     .catch((error) => {
-      ctx.status = 404
+      ctx.status = 400
       ctx.body = { error: error }
     })
 }
