@@ -1,6 +1,6 @@
 {
   "name": "sirena-htg-api",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "API for hack the gap program",
   "main": "server.js",
   "dependencies": {
