@@ -5,7 +5,7 @@ const validAccount = require('../resources/testAccount.json')
 const Account = require('../../src/models/account')
 const SECRET = require('../../src/config/global.json').secret
 
-describe('Testing CREATE NEW ACCOUNT', () => {
+describe('Testing GET ONE ACCOUNT', () => {
   beforeAll(async () => {
     await deleteTestAccount()
   })
@@ -13,18 +13,15 @@ describe('Testing CREATE NEW ACCOUNT', () => {
     await deleteTestAccount()
     await mongoose.disconnect()
   })
-  it('POST /api/private/accounts should return status 201', async (done) => {
-    const response = await supertest(app.callback())
+  it('GET /api/accounts/:id should return status 200', async (done) => {
+    const postResponse = await supertest(app.callback())
       .post('/api/private/accounts')
       .set('authorization', SECRET)
       .send({ account: validAccount })
-    expect(response.status).toBe(201)
-    expect(response.body.status).toBe('success')
-    done()
-  })
-  it('POST /api/private/accounts without token should return status 401', async (done) => {
-    const response = await supertest(app.callback()).post('/api/private/accounts').send({ account: validAccount })
-    expect(response.status).toBe(401)
+    const getResponse = await supertest(app.callback()).get(`/api/accounts/${postResponse.body.accountCreatedId}`)
+    expect(getResponse.status).toBe(200)
+    expect(getResponse.body.status).toBe('success')
+    expect(getResponse.body.account._id).toBe(postResponse.body.accountCreatedId)
     done()
   })
 })

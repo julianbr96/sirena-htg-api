@@ -2,8 +2,11 @@
 
 const Group = require('../../../models/group')
 
-const modifyGroup = async ctx => {
-  const groupToModify = await Group.findById(ctx.params.id).catch(error => {
+const modifyGroup = async (ctx) => {
+  if (!ctx.request.body.group) {
+    ctx.throw(400, 'No "group" field sent')
+  }
+  const groupToModify = await Group.findById(ctx.params.id).catch((error) => {
     ctx.status = 500
     ctx.body = { error: error }
   })
@@ -13,7 +16,7 @@ const modifyGroup = async ctx => {
         ctx.status = 201
         ctx.body = { status: 'success' }
       })
-      .catch(error => {
+      .catch((error) => {
         ctx.status = 400
         ctx.body = { error: error }
       })

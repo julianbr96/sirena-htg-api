@@ -6,17 +6,17 @@ const Account = require('../../src/models/account')
 const SECRET = require('../../src/config/global.json').secret
 
 describe('Testing MODIFY ONE ACCOUNT', () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
     await deleteTestAccount()
   })
-  beforeAll(async () => {
+  afterEach(async () => {
     await deleteTestAccount()
   })
   afterAll(async () => {
     await deleteTestAccount()
     await mongoose.disconnect()
   })
-  it('PUT /api/private/accounts/:id should return status 201', async done => {
+  it('PUT /api/private/accounts/:id should return status 201', async (done) => {
     const postResponse = await supertest(app.callback())
       .post('/api/private/accounts')
       .set('authorization', SECRET)
@@ -29,7 +29,7 @@ describe('Testing MODIFY ONE ACCOUNT', () => {
     expect(putResponse.body.status).toBe('success')
     done()
   })
-  it('PUT /api/private/accounts/:id without token should return status 401', async done => {
+  it('PUT /api/private/accounts/:id without token should return status 401', async (done) => {
     const postResponse = await supertest(app.callback())
       .post('/api/private/accounts')
       .set('authorization', SECRET)
@@ -43,7 +43,7 @@ describe('Testing MODIFY ONE ACCOUNT', () => {
 })
 
 async function deleteTestAccount () {
-  await Account.deleteOne({ name: validAccount.name }, error => {
+  await Account.deleteOne({ name: validAccount.name }, (error) => {
     if (error) {
       throw Error(error)
     }
