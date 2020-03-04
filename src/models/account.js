@@ -3,6 +3,12 @@
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 
+const profileTypesValues = require('../config/global.json').profileTypesValues
+const profileTypes = {
+  values: profileTypesValues,
+  message: `Only profile types available are: ${profileTypesValues}`
+}
+
 const schema = new mongoose.Schema(
   {
     name: { type: String, unique: true },
@@ -10,7 +16,7 @@ const schema = new mongoose.Schema(
     countryCode: String,
     profileType: {
       type: String,
-      enum: ['customer', 'demoCustomer', 'partner', 'leadProvider']
+      enum: profileTypes
     }
   },
   {

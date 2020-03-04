@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 const userRolesValues = require('../config/global.json').userRolesValues
 const userRoles = { values: userRolesValues, message: `Only roles available are: ${userRolesValues}` }
 
-const userLanguagesValues = require('../config/global.json').userLanguagesValues
+const userLanguagesValues = require('../config/global.json').languagesValues
 const userLanguages = { values: userLanguagesValues, message: `Only languages available are: ${userLanguagesValues}` }
 
 /***

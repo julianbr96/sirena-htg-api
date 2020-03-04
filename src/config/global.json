@@ -6,9 +6,28 @@
         "agent",
         "owner"
     ],
-    "userLanguagesValues": [
+    "languagesValues": [
         "es",
         "pt",
         "en"
+    ],
+    "groupTypesValues": [
+        "oem",
+        "group",
+        "store",
+        "leadProvider"
+    ],
+    "groupIndustryValues": [
+        "vehicle",
+        "insurance",
+        "savingPlan",
+        "realEstate",
+        "retail"
+    ],
+    "accountProfileTypeValues": [
+        "customer",
+        "demoCustomer",
+        "partner",
+        "leadProvider"
     ]
 }
