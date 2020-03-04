@@ -5,5 +5,10 @@
         "admin",
         "agent",
         "owner"
+    ],
+    "userLanguagesValues": [
+        "es",
+        "pt",
+        "en"
     ]
 }

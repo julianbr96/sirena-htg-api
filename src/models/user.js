@@ -8,6 +8,9 @@ const BCRYPT_SALT_ROUNDS = 12
 const userRolesValues = require('../config/global.json').userRolesValues
 const userRoles = { values: userRolesValues, message: `Only roles available are: ${userRolesValues}` }
 
+const userLanguagesValues = require('../config/global.json').userLanguagesValues
+const userLanguages = { values: userLanguagesValues, message: `Only languages available are: ${userLanguagesValues}` }
+
 /***
  * @type {mongoose.Schema}
  */
@@ -76,7 +79,7 @@ const schema = mongoose.Schema(
     },
     language: {
       type: String,
-      enum: [ 'es', 'pt', 'en' ]
+      enum: userLanguages
     }
   },
   {
