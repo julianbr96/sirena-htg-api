@@ -11,7 +11,7 @@ describe('Testing DELETE ONE USER', () => {
     const postResponse = await supertest(app.callback()).post('/api/users').send({ user: validUser })
     const deleteResponse = await supertest(app.callback()).delete(`/api/users/${postResponse.body.userCreatedId}`)
     expect(deleteResponse.status).toBe(200)
-    expect(deleteResponse.body.status).toBe('success')
+    expect(deleteResponse.body.status).toBe('deleted')
     done()
   })
 })

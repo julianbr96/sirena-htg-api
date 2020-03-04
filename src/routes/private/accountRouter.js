@@ -7,6 +7,7 @@ const baseUrl = '/api/private/accounts'
 const auth = require('../../middleware/secretAuth')
 
 router.put(`${baseUrl}/:id`, auth, accountController.modifyAccount)
+router.delete(`${baseUrl}/:id`, auth, accountController.deleteAccount)
 router.post(`${baseUrl}/`, auth, accountController.createAccount)
 router.get(`${baseUrl}/`, auth, accountController.getAllAccounts)
 

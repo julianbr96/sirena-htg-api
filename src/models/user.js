@@ -3,9 +3,12 @@
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 const bcrypt = require('bcrypt')
-const BCRYPT_SALT_ROUNDS = 12
 
-const userRoles = ['admin', 'agent', 'owner']
+const userRolesValues = require('../config/global.json').userRolesValues
+const userRoles = { values: userRolesValues, message: `Only roles available are: ${userRolesValues}` }
+
+const userLanguagesValues = require('../config/global.json').userLanguagesValues
+const userLanguages = { values: userLanguagesValues, message: `Only languages available are: ${userLanguagesValues}` }
 
 /***
  * @type {mongoose.Schema}
@@ -53,9 +56,10 @@ const schema = mongoose.Schema(
       required: true,
       trim: true
     },
-    pwHash: {
+    password: {
       type: String,
-      select: false
+      select: false,
+      required: true
     },
     active: {
       type: Boolean,
@@ -75,7 +79,7 @@ const schema = mongoose.Schema(
     },
     language: {
       type: String,
-      enum: ['es', 'pt', 'en']
+      enum: userLanguages
     }
   },
   {
@@ -87,12 +91,16 @@ const schema = mongoose.Schema(
 
 schema.plugin(uniqueValidator)
 
-schema.virtual('password').set(function setPassword (password) {
-  this.pwHash = bcrypt.hashSync(password, BCRYPT_SALT_ROUNDS)
+schema.method('comparePassword', function comparPassword (password) {
+  return this.password && bcrypt.compareSync(password, this.password)
 })
 
-schema.method('comparePassword', function comparPassword (password) {
-  return this.pwHash && bcrypt.compareSync(password, this.pwHash)
-})
+schema.path('userName').validate(function (v, fn) {
+  return v.match(/^.+@[^\.].*\.[a-z]{2,}$/)
+}, 'userName does not match Email Format')
+
+schema.path('phone').validate(function (v, fn) {
+  return v.match(/^\+(?:[0-9] ?){6,14}[0-9]$/)
+}, 'Invalid phone number')
 
 module.exports = mongoose.model('user', schema)

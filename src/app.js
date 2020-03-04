@@ -2,6 +2,7 @@
 
 const Koa = require('koa')
 const bodyParser = require('koa-parser')
+const logger = require('koa-logger')
 const router = require('./routes')
 const config = require('./config/global.json')
 const app = new Koa()
@@ -12,6 +13,8 @@ const mongoose = require('mongoose')
 connectDb()
 
 app.use(bodyParser())
+app.use(logger())
+
 app.use(router.rootRouter.routes())
 app.use(router.userRouter.routes())
 app.use(router.privateAccountRouter.routes())

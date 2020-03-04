@@ -11,7 +11,7 @@ const modifyUser = async (ctx) => {
     ctx.body = { error: error }
   })
   if (userToModify) {
-    await User.updateOne(userToModify, ctx.request.body.user)
+    await User.updateOne({ _id: ctx.params.id }, ctx.request.body.user, { runValidators: true })
       .then(() => {
         ctx.status = 201
         ctx.body = { status: 'success' }
@@ -21,7 +21,7 @@ const modifyUser = async (ctx) => {
         ctx.body = { error: error }
       })
   } else {
-    ctx.throw(404, 'Group not found')
+    ctx.throw(404, 'User not found')
   }
 }
 
