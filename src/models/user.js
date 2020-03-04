@@ -5,7 +5,7 @@ const uniqueValidator = require('mongoose-unique-validator')
 const bcrypt = require('bcrypt')
 const BCRYPT_SALT_ROUNDS = 12
 
-const userRoles = ['admin', 'agent', 'owner']
+const userRoles = [ 'admin', 'agent', 'owner' ]
 
 /***
  * @type {mongoose.Schema}
@@ -75,7 +75,7 @@ const schema = mongoose.Schema(
     },
     language: {
       type: String,
-      enum: ['es', 'pt', 'en']
+      enum: [ 'es', 'pt', 'en' ]
     }
   },
   {
@@ -94,5 +94,9 @@ schema.virtual('password').set(function setPassword (password) {
 schema.method('comparePassword', function comparPassword (password) {
   return this.pwHash && bcrypt.compareSync(password, this.pwHash)
 })
+
+schema.path('userName').validate(function (v, fn) {
+  return v.match(/^.+@[^\.].*\.[a-z]{2,}$/)
+}, 'userName does not match Email Format')
 
 module.exports = mongoose.model('user', schema)
