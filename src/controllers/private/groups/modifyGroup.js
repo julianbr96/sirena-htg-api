@@ -11,7 +11,7 @@ const modifyGroup = async (ctx) => {
     ctx.body = { error: error }
   })
   if (groupToModify) {
-    await Group.updateOne(groupToModify, ctx.request.body.group)
+    await Group.updateOne({ _id: ctx.params.id }, ctx.request.body.group, { runValidators: true })
       .then(() => {
         ctx.status = 201
         ctx.body = { status: 'success' }

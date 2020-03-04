@@ -8,7 +8,7 @@ const modifyAccount = async (ctx) => {
     ctx.body = { error: error }
   })
   if (accountToModify) {
-    await Account.updateOne(accountToModify, ctx.request.body.account)
+    await Account.updateOne({ _id: ctx.params.id }, ctx.request.body.account, { runValidators: true })
       .then(() => {
         ctx.status = 201
         ctx.body = { status: 'success' }

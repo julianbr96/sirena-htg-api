@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 
-const profileTypesValues = require('../config/global.json').profileTypesValues
+const profileTypesValues = require('../config/global.json').accountProfileTypeValues
 const profileTypes = {
   values: profileTypesValues,
   message: `Only profile types available are: ${profileTypesValues}`

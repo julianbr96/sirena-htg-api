@@ -8,7 +8,7 @@ const deleteOneAccount = async (ctx) => {
     ctx.body = { error: error }
   })
   if (account) {
-    await Account.deleteOne(account)
+    await Account.deleteOne({ _id: ctx.params.id })
       .then(async () => {
         ctx.status = 200
         ctx.body = { status: 'deleted' }

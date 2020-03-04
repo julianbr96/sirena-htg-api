@@ -8,7 +8,7 @@ const deleteOneGroup = async (ctx) => {
     ctx.body = { error: error }
   })
   if (group) {
-    await Group.deleteOne(group)
+    await Group.deleteOne({ _id: ctx.params.id })
       .then(async () => {
         ctx.status = 200
         ctx.body = { status: 'deleted' }

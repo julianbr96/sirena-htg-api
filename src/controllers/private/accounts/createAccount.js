@@ -3,7 +3,7 @@
 const Account = require('../../../models/account')
 
 const createAccount = async function (ctx) {
-  const account = await new Account(ctx.request.body.account)
+  const account = new Account(ctx.request.body.account)
   await account
     .save()
     .then(() => {
