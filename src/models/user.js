@@ -5,7 +5,8 @@ const uniqueValidator = require('mongoose-unique-validator')
 const bcrypt = require('bcrypt')
 const BCRYPT_SALT_ROUNDS = 12
 
-const userRoles = [ 'admin', 'agent', 'owner' ]
+const userRolesValues = require('../config/global.json').userRolesValues
+const userRoles = { values: userRolesValues, message: `Only roles available are: ${userRolesValues}` }
 
 /***
  * @type {mongoose.Schema}
