@@ -3,7 +3,6 @@
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 const bcrypt = require('bcrypt')
-const BCRYPT_SALT_ROUNDS = 12
 
 const userRolesValues = require('../config/global.json').userRolesValues
 const userRoles = { values: userRolesValues, message: `Only roles available are: ${userRolesValues}` }
@@ -57,9 +56,10 @@ const schema = mongoose.Schema(
       required: true,
       trim: true
     },
-    pwHash: {
+    password: {
       type: String,
-      select: false
+      select: false,
+      required: true
     },
     active: {
       type: Boolean,
@@ -91,12 +91,8 @@ const schema = mongoose.Schema(
 
 schema.plugin(uniqueValidator)
 
-schema.virtual('password').set(function setPassword (password) {
-  this.pwHash = bcrypt.hashSync(password, BCRYPT_SALT_ROUNDS)
-})
-
 schema.method('comparePassword', function comparPassword (password) {
-  return this.pwHash && bcrypt.compareSync(password, this.pwHash)
+  return this.password && bcrypt.compareSync(password, this.password)
 })
 
 schema.path('userName').validate(function (v, fn) {
