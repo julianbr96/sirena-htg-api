@@ -3,6 +3,9 @@
 const Account = require('../../../models/account')
 
 const modifyAccount = async (ctx) => {
+  if (!ctx.request.body.account) {
+    ctx.throw(400, 'No "account" path sent')
+  }
   const accountToModify = await Account.findById(ctx.params.id).catch((error) => {
     ctx.status = 500
     ctx.body = { error: error }

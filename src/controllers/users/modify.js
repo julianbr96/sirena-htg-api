@@ -3,9 +3,6 @@
 const User = require('../../models/user')
 
 const modifyUser = async (ctx) => {
-  if (!ctx.request.body.user) {
-    ctx.throw(400, 'No "user" field sent')
-  }
   const userToModify = await User.findById(ctx.params.id).catch((error) => {
     ctx.status = 500
     ctx.body = { error: error }

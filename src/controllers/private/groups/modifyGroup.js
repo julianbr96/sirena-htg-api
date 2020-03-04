@@ -4,7 +4,7 @@ const Group = require('../../../models/group')
 
 const modifyGroup = async (ctx) => {
   if (!ctx.request.body.group) {
-    ctx.throw(400, 'No "group" field sent')
+    ctx.throw(400, 'No "group" path sent')
   }
   const groupToModify = await Group.findById(ctx.params.id).catch((error) => {
     ctx.status = 500

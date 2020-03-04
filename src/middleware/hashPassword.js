@@ -4,6 +4,9 @@ const bcrypt = require('bcrypt')
 const BCRYPT_SALT_ROUNDS = 12
 
 module.exports = async (ctx, next) => {
+  if (!ctx.request.body.user) {
+    ctx.throw(400, 'No "user" path sent')
+  }
   const pass = ctx.request.body.user.password
   if (pass) {
     if (pass.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/)) {
