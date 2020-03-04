@@ -11,7 +11,7 @@ const deleteOneUser = async (ctx) => {
     await User.deleteOne(user)
       .then(async () => {
         ctx.status = 200
-        ctx.body = { status: 'success' }
+        ctx.body = { status: 'deleted' }
       })
       .catch(async (error) => {
         ctx.status = 500
