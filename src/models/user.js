@@ -103,4 +103,8 @@ schema.path('userName').validate(function (v, fn) {
   return v.match(/^.+@[^\.].*\.[a-z]{2,}$/)
 }, 'userName does not match Email Format')
 
+schema.path('phone').validate(function (v, fn) {
+  return v.match(/^\+(?:[0-9] ?){6,14}[0-9]$/)
+}, 'Invalid phone number')
+
 module.exports = mongoose.model('user', schema)
