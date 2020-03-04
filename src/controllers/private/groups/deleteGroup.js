@@ -1,14 +1,14 @@
 'use strict'
 
-const User = require('../../models/user')
+const Group = require('../../../models/group')
 
-const deleteOneUser = async (ctx) => {
-  const user = await User.findById(ctx.params.id).catch(async (error) => {
+const deleteOneGroup = async (ctx) => {
+  const group = await Group.findById(ctx.params.id).then().catch(async (error) => {
     ctx.status = 500
     ctx.body = { error: error }
   })
-  if (user) {
-    await User.deleteOne({ _id: ctx.params.id })
+  if (group) {
+    await Group.deleteOne(group)
       .then(async () => {
         ctx.status = 200
         ctx.body = { status: 'deleted' }
@@ -18,8 +18,8 @@ const deleteOneUser = async (ctx) => {
         ctx.body = { error: error }
       })
   } else {
-    ctx.throw(404, 'User not found')
+    ctx.throw(404, 'Group not found')
   }
 }
 
-module.exports = deleteOneUser
+module.exports = deleteOneGroup
