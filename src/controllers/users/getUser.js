@@ -7,6 +7,8 @@ const getUserById = async (ctx) => {
     { _id: ctx.params.id },
     { group: 1, account: 1, firstName: 1, lastName: 1, userName: 1, roles: 1, available: 1, nin: 1, phone: 1 }
   )
+    .populate('group', 'name parent account')
+    .populate('account', 'name')
     .then((user) => {
       ctx.status = 200
       ctx.body = { user: user, status: 'success' }
