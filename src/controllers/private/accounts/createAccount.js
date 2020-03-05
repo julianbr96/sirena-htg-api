@@ -17,7 +17,8 @@ const createAccount = async function (ctx) {
       ctx.status = 400
       ctx.body = {
         error: error,
-        failedAccount: account
+        failedAccount: account,
+        status: 'failed'
       }
     })
 }

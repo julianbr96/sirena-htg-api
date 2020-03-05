@@ -17,7 +17,8 @@ const createGroup = async function (ctx) {
       ctx.status = 400
       ctx.body = {
         error: error,
-        failedGroup: group
+        failedGroup: group,
+        status: 'failed'
       }
     })
 }

@@ -5,7 +5,7 @@ const Account = require('../../../models/account')
 const deleteOneAccount = async (ctx) => {
   const account = await Account.findById(ctx.params.id).then().catch(async (error) => {
     ctx.status = 500
-    ctx.body = { error: error }
+    ctx.body = { error: error, status: 'failed' }
   })
   if (account) {
     await Account.deleteOne({ _id: ctx.params.id })
@@ -15,7 +15,7 @@ const deleteOneAccount = async (ctx) => {
       })
       .catch(async (error) => {
         ctx.status = 500
-        ctx.body = { error: error }
+        ctx.body = { error: error, status: 'failed' }
       })
   } else {
     ctx.throw(404, 'Account not found')

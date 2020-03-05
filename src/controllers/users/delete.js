@@ -5,7 +5,7 @@ const User = require('../../models/user')
 const deleteOneUser = async (ctx) => {
   const user = await User.findById(ctx.params.id).catch(async (error) => {
     ctx.status = 500
-    ctx.body = { error: error }
+    ctx.body = { error: error, status: 'failed' }
   })
   if (user) {
     await User.deleteOne({ _id: ctx.params.id })
@@ -15,7 +15,7 @@ const deleteOneUser = async (ctx) => {
       })
       .catch(async (error) => {
         ctx.status = 500
-        ctx.body = { error: error }
+        ctx.body = { error: error, status: 'failed' }
       })
   } else {
     ctx.throw(404, 'User not found')

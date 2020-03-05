@@ -24,7 +24,8 @@ module.exports = async (ctx, next) => {
               value: pass
             }
           }
-        }
+        },
+        status: 'failed'
       }
     }
   } else {

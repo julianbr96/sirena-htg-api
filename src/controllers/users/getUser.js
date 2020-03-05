@@ -13,7 +13,7 @@ const getUserById = async (ctx) => {
     })
     .catch((error) => {
       ctx.status = 400
-      ctx.body = { error: error }
+      ctx.body = { error: error, status: 'failed' }
     })
 }
 

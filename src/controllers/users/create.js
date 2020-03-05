@@ -15,7 +15,8 @@ const createUser = async function (ctx) {
       ctx.status = 400
       ctx.body = {
         error: error,
-        failedUser: user
+        failedUser: user,
+        status: 'failed'
       }
     })
 }

@@ -10,7 +10,7 @@ const getGroupById = async (ctx) => {
     })
     .catch((error) => {
       ctx.status = 404
-      ctx.body = { error: error }
+      ctx.body = { error: error, status: 'failed' }
     })
 }
 

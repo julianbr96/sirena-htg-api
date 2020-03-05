@@ -8,7 +8,7 @@ const modifyGroup = async (ctx) => {
   }
   const groupToModify = await Group.findById(ctx.params.id).catch((error) => {
     ctx.status = 500
-    ctx.body = { error: error }
+    ctx.body = { error: error, status: 'failed' }
   })
   if (groupToModify) {
     await Group.updateOne({ _id: ctx.params.id }, ctx.request.body.group, { runValidators: true })
@@ -18,7 +18,7 @@ const modifyGroup = async (ctx) => {
       })
       .catch((error) => {
         ctx.status = 400
-        ctx.body = { error: error }
+        ctx.body = { error: error, status: 'failed' }
       })
   } else {
     ctx.throw(404, 'Group not found')

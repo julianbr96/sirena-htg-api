@@ -8,7 +8,7 @@ const modifyAccount = async (ctx) => {
   }
   const accountToModify = await Account.findById(ctx.params.id).catch((error) => {
     ctx.status = 500
-    ctx.body = { error: error }
+    ctx.body = { error: error, status: 'failed' }
   })
   if (accountToModify) {
     await Account.updateOne({ _id: ctx.params.id }, ctx.request.body.account, { runValidators: true })
@@ -18,7 +18,7 @@ const modifyAccount = async (ctx) => {
       })
       .catch((error) => {
         ctx.status = 400
-        ctx.body = { error: error }
+        ctx.body = { error: error, status: 'failed' }
       })
   } else {
     ctx.throw(404, 'Account not found')
