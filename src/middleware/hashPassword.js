@@ -1,7 +1,7 @@
 'use strict'
 
 const bcrypt = require('bcrypt')
-const BCRYPT_SALT_ROUNDS = 12
+const BCRYPT_SALT_ROUNDS = require('../config/global.json').BCRYPT_SALT_ROUNDS
 
 module.exports = async (ctx, next) => {
   if (!ctx.request.body.user) {

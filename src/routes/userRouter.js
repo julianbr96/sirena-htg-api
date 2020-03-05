@@ -4,7 +4,7 @@ const Router = require('koa-router')
 const router = new Router()
 const userController = require('../controllers/users')
 const hashPassword = require('../middleware/hashPassword')
-const baseUrl = '/api/users'
+const baseUrl = require('../config/global.json').apiEndpoints.userRoutes
 
 router.get(`${baseUrl}/:id`, userController.getUserById)
 router.put(`${baseUrl}/:id`, hashPassword, userController.modifyUser)
