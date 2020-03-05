@@ -1,6 +1,7 @@
 'use strict'
 
 const mongoose = require('mongoose')
+const Account = require('./account')
 
 const groupLanguagesValues = require('../config/global.json').languagesValues
 const groupLanguages = {
@@ -32,12 +33,6 @@ const schema = mongoose.Schema(
       ref: 'group',
       default: null
     },
-    ancestors: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'group'
-      }
-    ],
     name: { type: String, required: true },
     countryCode: { type: String, required: true },
     phone: {
@@ -87,4 +82,29 @@ schema.path('phone').validate(function (v, fn) {
   return v.match(/^\+(?:[0-9] ?){6,14}[0-9]$/)
 }, 'Invalid phone number')
 
-module.exports = mongoose.model('group', schema)
+schema.path('account').validate(async function (v, fn) {
+  try {
+    const account = await Account.findById(v)
+    if (account) return true
+    else return false
+  } catch (error) {
+    console.log(error)
+    return false
+  }
+}, 'account id does not match any existent account')
+
+schema.path('parent').validate(async function (v, fn) {
+  try {
+    if (!v) return true
+    const group = await groupModel.findById(v)
+    if (group) return true
+    else return false
+  } catch (error) {
+    console.log(error)
+    return false
+  }
+}, 'group id does not match any existent group')
+
+const groupModel = mongoose.model('group', schema)
+
+module.exports = groupModel
