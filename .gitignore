@@ -105,3 +105,6 @@ dist
 
 # API conditions
 ejercicioBackend
+
+# Documentation
+doc/apiDocumentation/apidocumentation.js
