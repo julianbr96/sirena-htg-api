@@ -11,7 +11,7 @@ const profileTypes = {
 
 const schema = new mongoose.Schema(
   {
-    name: { type: String, unique: true },
+    name: { type: String, unique: true, required: true },
     enabled: { type: Boolean, default: true },
     countryCode: String,
     profileType: {
