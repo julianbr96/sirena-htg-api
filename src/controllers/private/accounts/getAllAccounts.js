@@ -9,8 +9,8 @@ const getAllAccounts = async (ctx) => {
       ctx.body = { accounts: accounts, status: 'success' }
     })
     .catch((error) => {
-      console.log(error)
-      ctx.throw(500, 'Internal Server Error')
+      ctx.status = 500
+      ctx.body = { error: error, status: 'failed' }
     })
 }
 

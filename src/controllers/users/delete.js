@@ -18,7 +18,8 @@ const deleteOneUser = async (ctx) => {
         ctx.body = { error: error, status: 'failed' }
       })
   } else {
-    ctx.throw(404, 'User not found')
+    ctx.status = 404
+    ctx.body = { error: 'User not found', status: 'failed' }
   }
 }
 

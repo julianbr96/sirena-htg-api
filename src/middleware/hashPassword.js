@@ -5,7 +5,8 @@ const BCRYPT_SALT_ROUNDS = require('../config/global.json').BCRYPT_SALT_ROUNDS
 
 module.exports = async (ctx, next) => {
   if (!ctx.request.body.user) {
-    ctx.throw(400, 'No "user" path sent')
+    ctx.status = 400
+    ctx.body = { error: 'No user path sent', status: 'failed' }
   }
   const pass = ctx.request.body.user.password
   if (pass) {

@@ -18,7 +18,8 @@ const deleteOneAccount = async (ctx) => {
         ctx.body = { error: error, status: 'failed' }
       })
   } else {
-    ctx.throw(404, 'Account not found')
+    ctx.status = 404
+    ctx.body = { error: 'Account not found', status: 'failed' }
   }
 }
 

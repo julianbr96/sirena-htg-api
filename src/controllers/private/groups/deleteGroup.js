@@ -18,7 +18,8 @@ const deleteOneGroup = async (ctx) => {
         ctx.body = { error: error, status: 'failed' }
       })
   } else {
-    ctx.throw(404, 'Group not found')
+    ctx.status = 404
+    ctx.body = { error: 'Group not found', status: 'failed' }
   }
 }
 

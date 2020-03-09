@@ -1,6 +1,7 @@
 {
     "secret": "WT9pqyMfDYoT!DYQFA-dKxdKFuoGpR",
     "MONGO_URI": "mongodb+srv://jbanosyrivas:TxXLpmG9E9aDVLDYvkw@nodecourse-ohxbc.mongodb.net/sirena-htg-prod?retryWrites=true&w=majority",
+    "PORT": 3000,
     "apiEndpoints": {
         "privateAccountRoutes": "/api/private/accounts",
         "privateGroupRoutes": "/api/private/groups",

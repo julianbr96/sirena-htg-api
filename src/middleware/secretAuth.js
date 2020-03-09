@@ -7,11 +7,13 @@ module.exports = async (ctx, next) => {
   if (ctx.request.header && ctx.request.header.authorization) {
     token = ctx.req.headers.authorization
   } else {
-    ctx.throw(401, 'Authorization header is missing')
+    ctx.status = 401
+    ctx.body = { error: 'Authorization header is missing', status: 'failed' }
   }
   if (token === SECRET) {
     await next()
   } else {
-    ctx.throw(401, 'Unauthorized')
+    ctx.status = 401
+    ctx.body = { error: 'Unauthorized', status: 'failed' }
   }
 }
