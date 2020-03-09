@@ -33,7 +33,7 @@ define({ "api": [
     "title": "Delete one Account",
     "name": "DeleteOneAccount",
     "group": "Account",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "permission": [
       {
         "name": "admin",
@@ -117,7 +117,7 @@ define({ "api": [
     "title": "Get all accounts",
     "name": "GetAllAccounts",
     "group": "Account",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "permission": [
       {
         "name": "admin",
@@ -202,7 +202,7 @@ define({ "api": [
     "title": "Get one account",
     "name": "GetOneAccount",
     "group": "Account",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "<p>Returns a json that includes the account identified by the id parameter (type path) and a status of the request (success or failed)</p>",
     "parameter": {
       "fields": {
@@ -285,7 +285,7 @@ define({ "api": [
     "title": "Create an Account",
     "name": "createOneAccount",
     "group": "Account",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "permission": [
       {
         "name": "admin",
@@ -402,7 +402,7 @@ define({ "api": [
     "title": "Modify an account",
     "name": "modifyOneAccount",
     "group": "Account",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "permission": [
       {
         "name": "admin",
@@ -529,7 +529,7 @@ define({ "api": [
     "title": "Delete one Group",
     "name": "DeleteOneGroup",
     "group": "Group",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "permission": [
       {
         "name": "admin",
@@ -613,7 +613,7 @@ define({ "api": [
     "title": "Get all groups",
     "name": "GetAllGroups",
     "group": "Group",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "<p>Returns a json that includes all the groups (groups path) as an array and a status of the request, success or failed (status path)</p>",
     "success": {
       "fields": {
@@ -683,7 +683,7 @@ define({ "api": [
     "title": "Get one group",
     "name": "GetOneGroup",
     "group": "Group",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "<p>Returns a json that includes the group identified by the id parameter (type path) and a status of the request (success or failed)</p>",
     "parameter": {
       "fields": {
@@ -780,7 +780,7 @@ define({ "api": [
     "title": "Create a Group",
     "name": "createOneGroup",
     "group": "Group",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "permission": [
       {
         "name": "admin",
@@ -925,7 +925,7 @@ define({ "api": [
     "title": "Modify a group",
     "name": "modifyOneGroup",
     "group": "Group",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "permission": [
       {
         "name": "admin",
@@ -1066,7 +1066,7 @@ define({ "api": [
     "title": "Delete one user",
     "name": "DeleteOneUser",
     "group": "User",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "<p>Delete the user that corresponds to the id sent as a parameter in the URL.</p>",
     "parameter": {
       "fields": {
@@ -1143,7 +1143,7 @@ define({ "api": [
     "title": "Get all users",
     "name": "GetAllUser",
     "group": "User",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "<p>Returns a json that includes all the users (users path) and a status of the request, success or failed (status path)</p>",
     "success": {
       "fields": {
@@ -1242,7 +1242,7 @@ define({ "api": [
     "title": "Get one user",
     "name": "GetOneUser",
     "group": "User",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "<p>Returns a json that includes the user identified by the id parameter (type path) and a status of the request (success or failed)</p>",
     "parameter": {
       "fields": {
@@ -1381,7 +1381,7 @@ define({ "api": [
     "title": "Post a user",
     "name": "createOneUser",
     "group": "User",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "<p>Creates a new user using the user path inside request body</p>",
     "parameter": {
       "fields": {
@@ -1540,7 +1540,7 @@ define({ "api": [
     "title": "Modify a user",
     "name": "modifyOneUser",
     "group": "User",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "<p>Modify the user identified by the id parameter in the url using the user path inside request body</p>",
     "parameter": {
       "fields": {
