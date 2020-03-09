@@ -35,11 +35,6 @@ const schema = mongoose.Schema(
     },
     name: { type: String, required: true },
     countryCode: { type: String, required: true },
-    phone: {
-      type: String,
-      required: true,
-      trim: true
-    },
     language: {
       type: String,
       enum: groupLanguages
@@ -61,14 +56,6 @@ const schema = mongoose.Schema(
     enabled: {
       type: Boolean,
       default: true
-    },
-    plan: {
-      type: String,
-      default: ''
-    },
-    freeUsers: {
-      type: Number,
-      default: 0
     }
   },
   {
@@ -77,10 +64,6 @@ const schema = mongoose.Schema(
     retainKeyOrder: true
   }
 )
-
-schema.path('phone').validate(function (v, fn) {
-  return v.match(/^\+(?:[0-9] ?){6,14}[0-9]$/)
-}, 'Invalid phone number')
 
 schema.path('account').validate(async function (v, fn) {
   try {
