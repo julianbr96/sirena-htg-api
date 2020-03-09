@@ -6,6 +6,7 @@ const logger = require('koa-logger')
 const router = require('./routes')
 const config = require('./config/global.json')
 const app = new Koa()
+const serve = require('koa-static-server')
 
 const MONGO_URI = config.MONGO_URI
 const mongoose = require('mongoose')
@@ -15,6 +16,7 @@ connectDb()
 app.use(bodyParser())
 app.use(logger())
 
+app.use(serve({ rootDir: 'doc', rootPath: '/api/doc', index: 'index.html' }))
 app.use(router.rootRouter.routes())
 app.use(router.userRouter.routes())
 app.use(router.privateAccountRouter.routes())

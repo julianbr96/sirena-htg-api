@@ -7,12 +7,13 @@
     "node": "^12"
   },
   "dependencies": {
-    "bcrypt": "^4.0.0",
+    "bcrypt": "^4.0.1",
     "koa": "^2.11.0",
     "koa-logger": "^3.2.1",
     "koa-parser": "^1.0.8",
     "koa-router": "^8.0.8",
-    "mongoose": "^5.9.2",
+    "koa-static-server": "^1.4.0",
+    "mongoose": "^5.9.3",
     "mongoose-unique-validator": "^2.0.3",
     "nconf": "^0.10.0"
   },
