@@ -1,29 +1,21 @@
 'use strict'
 
 const User = require('../../models/user')
+const checkArguments = require('./checkArguments')
+const err = require('../../errors')
 
 const createUser = async function (ctx) {
-  if (!ctx.request.body.user) {
-    ctx.status = 400
-    ctx.body = { error: 'No user path sent', status: 'failed' }
-  } else {
-    const user = new User(ctx.request.body.user)
-    await user
-      .save()
-      .then(() => {
-        ctx.status = 201
-        ctx.body = { status: 'success', userCreatedId: user._id }
-      })
-      .catch((error) => {
-        user.password = undefined
-        ctx.status = 400
-        ctx.body = {
-          error: error,
-          failedUser: user,
-          status: 'failed'
-        }
-      })
-  }
+  await checkArguments(ctx)
+  const user = new User(ctx.request.body.user)
+  await user
+    .save()
+    .then(() => {
+      ctx.status = 201
+      ctx.body = { status: 'success', userCreatedId: user._id }
+    })
+    .catch((error) => {
+      throw new err.GenericError(error)
+    })
 }
 
 module.exports = createUser

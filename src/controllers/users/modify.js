@@ -1,35 +1,30 @@
 'use strict'
 
 const User = require('../../models/user')
+const err = require('../../errors')
+const errorCodes = require('../../config/global.json').errorCodes
+const checkModifiableArguments = require('./checkModifiableArguments')
 
 const modifyUser = async (ctx) => {
   if (ctx.request.body.user.account) {
-    ctx.status = 400
-    ctx.body = { error: 'Cannot change user account', status: 'failed' }
-  } else {
-    if (!ctx.request.body.user) {
-      ctx.status = 400
-      ctx.body = { error: 'No user path sent', status: 'failed' }
-    } else {
-      const userToModify = await User.findById(ctx.params.id).catch((error) => {
-        ctx.status = 500
-        ctx.body = { error: error, status: 'failed' }
+    throw new err.InvalidArgument('Cannot change user account')
+  }
+  await checkModifiableArguments(ctx)
+  const userToModify = await User.findById(ctx.params.id).catch((error) => {
+    throw new err.GenericError(error)
+  })
+  if (userToModify) {
+    await User.updateOne({ _id: ctx.params.id }, ctx.request.body.user, { runValidators: true })
+      .then(() => {
+        ctx.status = 201
+        ctx.body = { status: 'success' }
       })
-      if (userToModify) {
-        await User.updateOne({ _id: ctx.params.id }, ctx.request.body.user, { runValidators: true })
-          .then(() => {
-            ctx.status = 201
-            ctx.body = { status: 'success' }
-          })
-          .catch((error) => {
-            ctx.status = 400
-            ctx.body = { error: error, status: 'failed' }
-          })
-      } else {
-        ctx.status = 404
-        ctx.body = { error: 'User not found', status: 'failed' }
-      }
-    }
+      .catch((error) => {
+        throw new err.GenericError(error)
+      })
+  } else {
+    throw new err.NotFound('User not found', errorCodes.USER_NOT_FOUND)
   }
 }
+
 module.exports = modifyUser

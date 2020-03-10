@@ -5,7 +5,7 @@ const validGroup = require('../resources/testGroup.json')
 const Group = require('../../src/models/group')
 const SECRET = require('../../src/config/global.json').secret
 
-describe('Testing MODIFY ONE ACCOUNT', () => {
+describe('Testing MODIFY ONE GROUP', () => {
   beforeEach(async () => {
     await deleteTestAccount()
   })

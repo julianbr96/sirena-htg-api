@@ -1,11 +1,12 @@
 'use strict'
 
 const User = require('../../models/user')
+const err = require('../../errors')
+const errorCodes = require('../../config/global.json').errorCodes
 
 const deleteOneUser = async (ctx) => {
   const user = await User.findById(ctx.params.id).catch(async (error) => {
-    ctx.status = 500
-    ctx.body = { error: error, status: 'failed' }
+    throw new err.GenericError(error)
   })
   if (user) {
     await User.deleteOne({ _id: ctx.params.id })
@@ -14,12 +15,10 @@ const deleteOneUser = async (ctx) => {
         ctx.body = { status: 'deleted' }
       })
       .catch(async (error) => {
-        ctx.status = 500
-        ctx.body = { error: error, status: 'failed' }
+        throw new err.GenericError(error)
       })
   } else {
-    ctx.status = 404
-    ctx.body = { error: 'User not found', status: 'failed' }
+    throw new err.NotFound('User not found', errorCodes.USER_NOT_FOUND)
   }
 }
 

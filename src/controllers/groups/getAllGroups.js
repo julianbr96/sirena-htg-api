@@ -1,6 +1,7 @@
 'use strict'
 
 const Group = require('../../models/group')
+const err = require('../../errors')
 
 const getAllGroups = async (ctx) => {
   await Group.find({}, { name: 1, parent: 1, account: 1 })
@@ -11,8 +12,7 @@ const getAllGroups = async (ctx) => {
       ctx.body = { groups: groups, status: 'success' }
     })
     .catch((error) => {
-      ctx.status = 500
-      ctx.body = { error: error, status: 'failed' }
+      throw new err.GenericError(error)
     })
 }
 

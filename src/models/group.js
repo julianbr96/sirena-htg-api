@@ -5,7 +5,7 @@ const Account = require('./account')
 
 const groupLanguagesValues = require('../config/global.json').languagesValues
 const groupLanguages = {
-  values: groupLanguagesValues,
+  values: Object.values(groupLanguagesValues),
   message: `Only languages available are: ${groupLanguagesValues}`
 }
 

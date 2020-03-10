@@ -10,16 +10,37 @@
         "userRoutes": "/api/users",
         "documentationRoutes": "/api/documentation"
     },
-    "userRolesValues": [
-        "admin",
-        "agent",
-        "owner"
-    ],
-    "languagesValues": [
-        "es",
-        "pt",
-        "en"
-    ],
+    "errorCodes": {
+        "INVALID_GROUP": "INVALID_GROUP",
+        "MISSING_GROUP": "MISSING_GROUP",
+        "INVALID_ACCOUNT": "INVALID_ACCOUNT",
+        "MISSING_ACCOUNT": "MISSING_ACCOUNT",
+        "MISSING_ROLE": "MISSING_ROLE",
+        "INVALID_ROLE": "INVALID_ROLE",
+        "INVALID_USER": "INVALID_USER",
+        "INVALID_PASSWORD": "INVALID_PASSWORD",
+        "USER_ALREADY_EXISTS": "USER_ALREADY_EXISTS",
+        "MISSING_PHONE": "MISSING_PHONE",
+        "INVALID_PHONE": "INVALID_PHONE",
+        "MISSING_PASSWORD": "MISSING_PASSWORD",
+        "MISSING_USER": "MISSING_USER",
+        "INVALID_LANGUAGE": "INVALID_LANGUAGE",
+        "MISSING_SECRET": "MISSING_SECRET",
+        "INVALID_SECRET": "INVALID_SECRET",
+        "USER_NOT_FOUND": "USER_NOT_FOUND",
+        "GROUP_NOT_FOUND": "GROUP_NOT_FOUND",
+        "ACCOUNT_NOT_FOUND": "ACCOUNT_NOT_FOUND"
+    },
+    "userRolesValues": {
+        "admin": "admin",
+        "agent": "agent",
+        "owner": "owner"
+    },
+    "languagesValues": {
+        "es": "es",
+        "pt": "pt",
+        "en": "en"
+    },
     "groupTypesValues": [
         "oem",
         "group",
