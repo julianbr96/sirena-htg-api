@@ -51,6 +51,7 @@
     "testTimeout": 10000
   },
   "apidoc": {
-    "title": "Sirena HTG API"
+    "title": "Sirena HTG API",
+    "url": "https://sirena-htg.herokuapp.com/"
   }
 }
