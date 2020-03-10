@@ -4,4 +4,4 @@
 
 Api for Sirena Hack the Gap program by Wolox
 
-[Check Documentation](sirena-htg.herokuapp.com/api/doc)
+[Check Documentation](https://sirena-htg.herokuapp.com/api/doc/)
